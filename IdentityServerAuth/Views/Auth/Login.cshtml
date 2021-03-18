@@ -1,0 +1,22 @@
+﻿@model IdentityServerAuth.Contracts.ViewModels.LoginViewModel
+
+
+<form asp-controller="Auth" asp-action="Login" method="post">
+    <input type="hidden" asp-for="ReturnUrl">
+
+    <div>
+        <label>Username</label>
+        <input asp-for="Username">
+    </div>
+    <div>
+        <label>Password</label>
+        <input asp-for="Password">
+    </div>
+    <button type="submit">Sign In</button>
+</form>
+
+    <label>Don't have an account yet ?</label>
+    <div>
+        <a asp-controller="Auth" asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">Sign up here !</a> 
+        @* you should never lose the returnUrl *@
+    </div>
