@@ -114,6 +114,16 @@
             "rid": "win"
           }
         }
+      },
+      "IdentityServer4.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/IdentityServer4.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/IdentityServer4.Contracts.dll": {}
+        }
       }
     }
   },
@@ -365,10 +375,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "IdentityServer4.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../IdentityServer4.Contracts/IdentityServer4.Contracts.csproj",
+      "msbuildProject": "../IdentityServer4.Contracts/IdentityServer4.Contracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "IdentityServer4.Contracts >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 5.0.4"
     ]
   },
@@ -398,7 +414,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\seantal\\source\\repos\\LoginOAuth\\IdentityServerAuth\\IdentityServer4.Contracts\\IdentityServer4.Contracts.csproj": {
+              "projectPath": "C:\\Users\\seantal\\source\\repos\\LoginOAuth\\IdentityServerAuth\\IdentityServer4.Contracts\\IdentityServer4.Contracts.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

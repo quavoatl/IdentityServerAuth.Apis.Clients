@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Threading.Tasks;
+using IdentityServer4.EntityFramework.Entities;
+using IdentityServer4.EntityFramework.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,5 +17,7 @@ namespace IdentityServerAuth.Data
         {
             base.OnModelCreating(builder);
         }
+
+    
     }
 }

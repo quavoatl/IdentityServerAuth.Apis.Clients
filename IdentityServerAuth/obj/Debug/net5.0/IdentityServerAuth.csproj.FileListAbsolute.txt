@@ -169,7 +169,6 @@ C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\b
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.dll
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\refs\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\refs\Microsoft.Extensions.FileProviders.Composite.dll
-C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\refs\Microsoft.Extensions.FileProviders.Embedded.dll
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\refs\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\refs\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.Abstractions.dll
@@ -386,3 +385,14 @@ C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\b
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\obj\Debug\net5.0\IdentityServerAuth.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\IdentityServerAuth.StaticWebAssets.xml
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\IdentityServer4.EntityFramework.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\IdentityServer4.EntityFramework.Storage.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\Microsoft.AspNetCore.ApiAuthorization.IdentityServer.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\IdentityServer4.Contracts.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServerAuth\bin\Debug\net5.0\IdentityServer4.Contracts.pdb

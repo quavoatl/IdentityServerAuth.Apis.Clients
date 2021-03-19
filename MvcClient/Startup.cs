@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.Contracts;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MvcClient
 {
@@ -17,18 +20,27 @@ namespace MvcClient
         {
             services.AddAuthentication(config =>
                 {
-                    config.DefaultScheme = "Cookie";
+                    config.DefaultScheme = "Cookies";
                     config.DefaultChallengeScheme = "oidc";
                 })
-                .AddCookie("Cookie")
+                .AddCookie("Cookies")
                 .AddOpenIdConnect("oidc", config =>
                 {
                     config.Authority = "https://localhost:5005";
                     config.ClientId = "client_id_mvc";
                     config.ClientSecret = "client_secret_mvc";
                     config.SaveTokens = true;
-
                     config.ResponseType = "code";
+
+                    config.GetClaimsFromUserInfoEndpoint = true;
+
+                    config.Scope.Add(ClaimsHelpers.ROLES_KEY);
+                    config.ClaimActions.MapUniqueJsonKey(ClaimsHelpers.ROLE,
+                                                            ClaimsHelpers.ROLE,
+                                                            ClaimsHelpers.ROLE);
+                    config.TokenValidationParameters.RoleClaimType = ClaimsHelpers.ROLE;
+                    //config.TokenValidationParameters.NameClaimType = "name";
+
                 });
 
             services.AddControllersWithViews();

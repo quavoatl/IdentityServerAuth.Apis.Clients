@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTwo", "ApiTwo\ApiTwo.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcClient", "MvcClient\MvcClient.csproj", "{AB71F255-4C73-4434-B722-35480499C36E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer4.Contracts", "IdentityServer4.Contracts\IdentityServer4.Contracts.csproj", "{82F6FCD4-E006-4891-8296-0FF2E694F332}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{AB71F255-4C73-4434-B722-35480499C36E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB71F255-4C73-4434-B722-35480499C36E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB71F255-4C73-4434-B722-35480499C36E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F6FCD4-E006-4891-8296-0FF2E694F332}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F6FCD4-E006-4891-8296-0FF2E694F332}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F6FCD4-E006-4891-8296-0FF2E694F332}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F6FCD4-E006-4891-8296-0FF2E694F332}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,12 @@
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\bin\Debug\net5.0\IdentityServer4.Contracts.deps.json
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\bin\Debug\net5.0\IdentityServer4.Contracts.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\bin\Debug\net5.0\ref\IdentityServer4.Contracts.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\bin\Debug\net5.0\IdentityServer4.Contracts.pdb
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\obj\Debug\net5.0\IdentityServer4.Contracts.csprojAssemblyReference.cache
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\obj\Debug\net5.0\IdentityServer4.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\obj\Debug\net5.0\IdentityServer4.Contracts.AssemblyInfoInputs.cache
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\obj\Debug\net5.0\IdentityServer4.Contracts.AssemblyInfo.cs
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\obj\Debug\net5.0\IdentityServer4.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\obj\Debug\net5.0\IdentityServer4.Contracts.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\obj\Debug\net5.0\ref\IdentityServer4.Contracts.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\IdentityServer4.Contracts\obj\Debug\net5.0\IdentityServer4.Contracts.pdb

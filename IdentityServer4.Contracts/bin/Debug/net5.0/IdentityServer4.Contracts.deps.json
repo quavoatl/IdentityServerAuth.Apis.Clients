@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "IdentityServer4.Contracts/1.0.0": {
+        "runtime": {
+          "IdentityServer4.Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "IdentityServer4.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

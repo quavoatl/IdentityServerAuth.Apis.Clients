@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using IdentityModel;
+using IdentityServer4.Contracts;
 using IdentityServer4.Models;
 
 namespace IdentityServerAuth
@@ -10,7 +11,16 @@ namespace IdentityServerAuth
         private readonly IEnumerable<IdentityResource> _registeredIdentityResources = new List<IdentityResource>()
         {
             new IdentityResources.OpenId(),
-            new IdentityResources.Profile()
+            new IdentityResources.Profile(),
+            new IdentityResource
+            {
+                Name = "mare.scope",
+                UserClaims =
+                {
+                    "mare.claim"
+                }
+            },
+            new IdentityResource(ClaimsHelpers.ROLES_KEY, "User role(s)", new List<string> {ClaimsHelpers.ROLE})
         };
 
         private readonly IEnumerable<ApiResource> _registeredApis = new List<ApiResource>()
@@ -54,9 +64,43 @@ namespace IdentityServerAuth
                     "ApiOne",
                     "ApiTwo",
                     IdentityServer4.IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServer4.IdentityServerConstants.StandardScopes.Profile
+                    IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
+                    "mare.scope",
+                    ClaimsHelpers.ROLES_KEY
                 },
+
+                AlwaysIncludeUserClaimsInIdToken = true,
+
                 RequireConsent = false
+            },
+
+            new Client
+            {
+                ClientId = "client_id_swagger_test",
+                ClientSecrets = new List<Secret>() {new Secret("secret".ToSha256())},
+                RequirePkce = true,
+                AllowedGrantTypes = GrantTypes.Code,
+
+                RedirectUris =
+                {
+                    "https://localhost:5030/swagger/oauth2-redirect.html"
+                },
+                AllowedCorsOrigins =
+                {
+                    "https://localhost:5030"
+                },
+
+                AllowedScopes =
+                {
+                    "ApiOne",
+                    "ApiTwo",
+                    IdentityServer4.IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
+                    "mare.scope",
+                    ClaimsHelpers.ROLES_KEY
+                },
+
+                AlwaysIncludeUserClaimsInIdToken = true,
             },
 
             new Client
@@ -69,7 +113,7 @@ namespace IdentityServerAuth
                 },
 
                 AllowedGrantTypes = GrantTypes.Code,
-                RequirePkce = true,
+                //RequirePkce = true,
                 RequireClientSecret = false,
 
                 RedirectUris =
@@ -82,8 +126,11 @@ namespace IdentityServerAuth
                 },
                 AllowedScopes =
                 {
-                    "api1"
-                }
+                    "api1",
+                    IdentityServer4.IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
+                    ClaimsHelpers.ROLES_KEY
+                },
             },
         };
 

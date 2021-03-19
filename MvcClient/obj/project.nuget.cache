@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8YrbuOCmcSWlEqzRMkImaATTqp8QURCaBcBtFOywPFhw2agGZBDnxoUZIcUABZrTO+XVy2dnCgHWxzU7EES2XQ==",
+  "dgSpecHash": "oN9m0SymMzIbZJLtGywEeF9i/uiyC73YhezxESf2PjLP5GXWeSfZtiowOivqRVDvcyb9ZZ2ULDLO0QdD2HsJWA==",
   "success": true,
   "projectFilePath": "C:\\Users\\seantal\\source\\repos\\LoginOAuth\\IdentityServerAuth\\MvcClient\\MvcClient.csproj",
   "expectedPackageFiles": [

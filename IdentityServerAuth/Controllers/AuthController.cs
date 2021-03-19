@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityServerAuth.Contracts;
 using IdentityServerAuth.Contracts.ViewModels;
@@ -11,11 +12,15 @@ namespace IdentityServerAuth.Controllers
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AuthController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public AuthController(SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         [HttpGet("/auth/login")]
@@ -28,19 +33,26 @@ namespace IdentityServerAuth.Controllers
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
             //check if the model is valid
+            var loginSuccess = await _signInManager
+                .PasswordSignInAsync(loginViewModel.Username, loginViewModel.Password, false, false);
 
-            var cacat = _userManager.Users.Where(x => x.Email.Contains(".com")).ToList().FirstOrDefault();
-            
-
-            var result =
-                await _signInManager.PasswordSignInAsync(loginViewModel.Username, loginViewModel.Password, false,
-                    false);
-
-            if (result.Succeeded)
+            if (loginSuccess.Succeeded)
             {
+                var user = _userManager.Users.SingleOrDefault(x => x.Email.Equals(loginViewModel.Username));
+
+                // var userRoles = await _userManager.GetRolesAsync(user);
+                //
+                // foreach (var role in userRoles)
+                // {
+                //     _userManager.AddClaimAsync(user, new Claim("mareRol", role));
+                // }
+                
+                await _signInManager.SignInAsync(user, false);
+
                 return Redirect(loginViewModel.ReturnUrl);
             }
-            else if (result.IsLockedOut)
+
+            else if (loginSuccess.IsLockedOut)
             {
                 //send mail with forget password
             }
@@ -70,10 +82,14 @@ namespace IdentityServerAuth.Controllers
                 Email = registerViewModel.Email,
                 UserName = registerViewModel.Username,
             };
+
+
             var registrationResponse = await _userManager.CreateAsync(user, registerViewModel.Password);
 
             if (registrationResponse.Succeeded)
             {
+                await _userManager.AddClaimAsync(user, new Claim("mare.claim", "super.claim"));
+
                 await _signInManager.SignInAsync(user, false);
 
                 return Redirect(registerViewModel.ReturnUrl);
