@@ -33,10 +33,9 @@ namespace IdentityServerAuth
         private readonly IEnumerable<ApiScope> _registeredScopes = new List<ApiScope>()
         {
             new ApiScope("api1", "full access"),
-            new ApiScope("ApiOne", "full access"),
+            new ApiScope("ApiOne", "Api One Resource - mare secret"),
             new ApiScope("ApiTwo", "full access")
         };
-
 
         private IEnumerable<Client> _registeredClients = new List<Client>()
         {
@@ -79,8 +78,7 @@ namespace IdentityServerAuth
                 ClientId = "client_id_swagger_test",
                 ClientSecrets = new List<Secret>() {new Secret("secret".ToSha256())},
                 RequirePkce = true,
-                AllowedGrantTypes = GrantTypes.Code,
-
+                AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                 RedirectUris =
                 {
                     "https://localhost:5030/swagger/oauth2-redirect.html"
@@ -89,7 +87,6 @@ namespace IdentityServerAuth
                 {
                     "https://localhost:5030"
                 },
-
                 AllowedScopes =
                 {
                     "ApiOne",
@@ -99,23 +96,14 @@ namespace IdentityServerAuth
                     "mare.scope",
                     ClaimsHelpers.ROLES_KEY
                 },
-
                 AlwaysIncludeUserClaimsInIdToken = true,
             },
-
             new Client
             {
-                ClientId = "demo_api_swagger",
-                ClientName = "Swagger UI for demo_api",
-                ClientSecrets =
-                {
-                    new Secret("secret".Sha256())
-                },
-
-                AllowedGrantTypes = GrantTypes.Code,
-                //RequirePkce = true,
-                RequireClientSecret = false,
-
+                ClientId = "broker_limits_rest_client",
+                ClientSecrets = new List<Secret>() {new Secret("secret".ToSha256())},
+                RequirePkce = true,
+                AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                 RedirectUris =
                 {
                     "https://localhost:5001/swagger/oauth2-redirect.html"
@@ -126,14 +114,19 @@ namespace IdentityServerAuth
                 },
                 AllowedScopes =
                 {
-                    "api1",
+                    "ApiOne",
+                    "ApiTwo",
                     IdentityServer4.IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
+                    "mare.scope",
                     ClaimsHelpers.ROLES_KEY
                 },
+                AlwaysIncludeUserClaimsInIdToken = true,
             },
         };
 
+        #region Getters
+        
         public IEnumerable<ApiResource> GetRegisteredApis()
         {
             return _registeredApis;
@@ -153,5 +146,8 @@ namespace IdentityServerAuth
         {
             return _registeredIdentityResources;
         }
+
+        #endregion
+        
     }
 }

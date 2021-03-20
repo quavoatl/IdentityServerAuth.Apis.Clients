@@ -15,7 +15,7 @@ namespace MvcClient.Controllers
         {
             return View();
         }
-        
+
         //[Authorize(Policy = "CustomerOnly")] //wont work, redirects to Account/AccessDenied, although the claim is there
         [Authorize(Roles = "Customer")] //wont work, redirects to Account/AccessDenied, although the claim is there
         public async Task<IActionResult> Secret()
@@ -26,9 +26,8 @@ namespace MvcClient.Controllers
             var claims = User.Claims.ToList();
             var _idToken = new JwtSecurityTokenHandler().ReadJwtToken(idToken);
             var _accessToken = new JwtSecurityTokenHandler().ReadJwtToken(accessToken);
-            
+
             return View();
         }
-        
     }
 }

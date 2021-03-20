@@ -40,3 +40,5 @@ C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\obj\Debug\
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\obj\Debug\net5.0\MvcClient.genruntimeconfig.cache
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\obj\Debug\net5.0\Razor\Views\Home\Secret.cshtml.g.cs
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\bin\Debug\net5.0\IdentityServer4.Contracts.dll
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\bin\Debug\net5.0\IdentityServer4.Contracts.pdb

@@ -32,14 +32,11 @@ namespace IdentityServerAuth
                     "Data Source=EN1410441\\SQLEXPRESS;Initial Catalog=CarInsUsers;Integrated Security=True");
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>(o => {
-                    o.Password.RequiredLength = 8;
-                })
+            services.AddIdentity<IdentityUser, IdentityRole>(o => { o.Password.RequiredLength = 8; })
                 .AddRoles<IdentityRole>()
                 .AddRoleManager<RoleManager<IdentityRole>>()
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<AppDbContext>();
-            
 
             services.ConfigureApplicationCookie(config =>
             {
@@ -60,22 +57,16 @@ namespace IdentityServerAuth
 
             services.AddTransient<IProfileService, IdentityClaimProfileService>();
 
-            
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseRouting();
-
             app.UseIdentityServer();
-
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
