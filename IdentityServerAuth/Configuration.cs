@@ -1,13 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using IdentityModel;
+using IdentityServer4;
 using IdentityServer4.Contracts;
 using IdentityServer4.Models;
+using IdentityServer4.Test;
 
 namespace IdentityServerAuth
 {
     public class Configuration
     {
+        private static readonly List<ClientClaim> _clientClaims = new List<ClientClaim>()
+        {
+            new ClientClaim(ClaimTypes.Role, "Broker")
+        };
+        
+        private readonly IEnumerable<TestUser> _registeredUsers = new List<TestUser>()
+        {
+            new TestUser
+            {
+                SubjectId = "Broker",
+                Username = "user100@example.com",
+                Password = "Password1234!",
+                Claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Role, "Broker"),
+                    new Claim("cacat", "mata")
+                }
+            },
+        };
+
         private readonly IEnumerable<IdentityResource> _registeredIdentityResources = new List<IdentityResource>()
         {
             new IdentityResources.OpenId(),
@@ -20,21 +44,57 @@ namespace IdentityServerAuth
                     "mare.claim"
                 }
             },
-            new IdentityResource(ClaimsHelpers.ROLES_KEY, "User role(s)", new List<string> {ClaimsHelpers.ROLE})
+            new IdentityResource
+            {
+                Name = "roles.scope",
+                UserClaims =
+                {
+                    "Broker",
+                }
+            },
+            new IdentityResource(ClaimsHelpers.ROLES_KEY, "User role(s)", new List<string> {ClaimsHelpers.ROLE}),
+            
         };
 
         private readonly IEnumerable<ApiResource> _registeredApis = new List<ApiResource>()
         {
+            new ApiResource("client_id_swagger_test") {Scopes = {"client_id_swagger_test"}},
             new ApiResource("ApiOne") {Scopes = {"ApiOne"}},
             new ApiResource("ApiTwo") {Scopes = {"ApiTwo"}},
-            new ApiResource("api1") {Scopes = {"api1"}}
+            new ApiResource("foo-api")
+            {
+                Scopes =
+                {
+                    "role"
+                }
+            },
+            new ApiResource
+            {
+                Name = "api1",
+                ApiSecrets = { new Secret("secret") },
+                UserClaims = {
+                    JwtClaimTypes.Email,
+                    JwtClaimTypes.PhoneNumber,
+                    JwtClaimTypes.GivenName,
+                    JwtClaimTypes.FamilyName,
+                    JwtClaimTypes.PreferredUserName
+                },
+                Description = "My API",
+                DisplayName = "MyApi1",
+                Enabled = true,
+                Scopes = { "api1" }
+            }
+            
+            
         };
 
         private readonly IEnumerable<ApiScope> _registeredScopes = new List<ApiScope>()
         {
+            new ApiScope("client_id_swagger_test", "client_id_swagger_test"),
             new ApiScope("api1", "full access"),
             new ApiScope("ApiOne", "Api One Resource - mare secret"),
-            new ApiScope("ApiTwo", "full access")
+            new ApiScope("ApiTwo", "full access"),
+            new ApiScope("roless", "full access")
         };
 
         private IEnumerable<Client> _registeredClients = new List<Client>()
@@ -47,6 +107,7 @@ namespace IdentityServerAuth
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 AllowedScopes =
                 {
+                    "client_id_swagger_test",
                     "ApiOne"
                 }
             },
@@ -76,7 +137,7 @@ namespace IdentityServerAuth
             new Client
             {
                 ClientId = "client_id_swagger_test",
-                ClientSecrets = new List<Secret>() {new Secret("secret".ToSha256())},
+                ClientSecrets = new List<Secret>() {new Secret("secretsecretsecret".ToSha256())},
                 RequirePkce = true,
                 AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                 RedirectUris =
@@ -101,7 +162,7 @@ namespace IdentityServerAuth
             new Client
             {
                 ClientId = "broker_limits_rest_client",
-                ClientSecrets = new List<Secret>() {new Secret("secret".ToSha256())},
+                ClientSecrets = new List<Secret>() {new Secret("secretsecretsecret".ToSha256())},
                 RequirePkce = true,
                 AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                 RedirectUris =
@@ -123,10 +184,30 @@ namespace IdentityServerAuth
                 },
                 AlwaysIncludeUserClaimsInIdToken = true,
             },
+            new Client
+            {
+                ClientId = "broker_limits_rest_client_tests",
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                AlwaysIncludeUserClaimsInIdToken = true,
+                AllowAccessTokensViaBrowser = true,
+                RequireClientSecret = false,
+                ClientSecrets =
+                {
+                    new Secret("secret".Sha256())
+                },
+                AllowedScopes =
+                {
+                    IdentityServer4.IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
+                    ClaimsHelpers.ROLES_KEY
+                },
+                Claims = _clientClaims
+            }
+            
         };
 
         #region Getters
-        
+
         public IEnumerable<ApiResource> GetRegisteredApis()
         {
             return _registeredApis;
@@ -147,7 +228,11 @@ namespace IdentityServerAuth
             return _registeredIdentityResources;
         }
 
+        public IEnumerable<TestUser> GetRegisteredTestUsersResources()
+        {
+            return _registeredUsers;
+        }
+
         #endregion
-        
     }
 }

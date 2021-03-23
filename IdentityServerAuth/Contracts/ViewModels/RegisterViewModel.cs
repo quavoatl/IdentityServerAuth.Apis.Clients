@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IdentityServerAuth.Contracts.ViewModels
 {
@@ -17,5 +20,7 @@ namespace IdentityServerAuth.Contracts.ViewModels
         public string ConfirmPassword { get; set; }
 
         public string ReturnUrl { get; set; }
+
+        public string AccountType { get; set; }
     }
 }

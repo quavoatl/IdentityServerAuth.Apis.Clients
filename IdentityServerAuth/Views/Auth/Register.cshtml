@@ -24,5 +24,12 @@
         <input asp-for="ConfirmPassword">
         <span asp-validation-for="ConfirmPassword"></span>
     </div>
+    <div>
+        <select asp-for="AccountType">
+            <option value="Broker">Broker</option>
+            <option value="Customer">Customer</option>
+        </select>
+    </div>
+
     <button type="submit">Sign Up</button>
 </form>
