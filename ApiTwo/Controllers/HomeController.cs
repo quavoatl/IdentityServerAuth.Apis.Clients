@@ -17,7 +17,7 @@ namespace ApiTwo.Controllers
         }
 
         [HttpGet("/index")]
-        public async Task<IActionResult> Index()
+        public async Task<string> Index()
         {
             var authServerClient = _clientFactory.CreateClient();
 
@@ -38,50 +38,9 @@ namespace ApiTwo.Controllers
                 
             });
 
-            tokenClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", tokenResult.AccessToken);
+            return tokenResult.AccessToken;  //return token, use it in request header for the necessary resource
 
-            var userInfo = await tokenClient.GetUserInfoAsync(new UserInfoRequest
-            {
-                Address = disco.UserInfoEndpoint,
-                Token = tokenResult.AccessToken 
-            });
-            
-            //var userInfo = await tokenClient.GetAsync("https://localhost:5005/connect/userinfo");
-            //var userInfoContent = userInfo.Content.ReadAsStringAsync();
 
-            
-            
-
-            return Ok();
-
-            //retrieve access token
-            // var authServerClient = _clientFactory.CreateClient();
-            //
-            // var discoveryDoc = await authServerClient.GetDiscoveryDocumentAsync("https://localhost:5005/");
-            // var tokenResponse = await authServerClient.RequestClientCredentialsTokenAsync(
-            //     new ClientCredentialsTokenRequest()
-            //     {
-            //         Address = discoveryDoc.TokenEndpoint,
-            //         
-            //         ClientId = "client_id",
-            //         ClientSecret = "client_secret",
-            //         
-            //         Scope = "client_id_swagger_test",
-            //     });
-            //
-            // //retrieve secret data
-            // var apiClient = _clientFactory.CreateClient();
-            // apiClient.SetBearerToken(tokenResponse.AccessToken);
-            //
-            // var responseMessage = await apiClient.GetAsync("https://localhost:5001/api/v1/limits");
-            // var responseContent = await responseMessage.Content.ReadAsStringAsync();
-            //
-            // return Ok(new
-            // {
-            //     access_token = tokenResponse.AccessToken,
-            //     message = responseContent
-            // });
         }
     }
 }

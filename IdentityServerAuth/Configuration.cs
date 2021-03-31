@@ -16,7 +16,7 @@ namespace IdentityServerAuth
         {
             new ClientClaim(ClaimTypes.Role, "Broker")
         };
-        
+
         private readonly IEnumerable<TestUser> _registeredUsers = new List<TestUser>()
         {
             new TestUser
@@ -53,7 +53,6 @@ namespace IdentityServerAuth
                 }
             },
             new IdentityResource(ClaimsHelpers.ROLES_KEY, "User role(s)", new List<string> {ClaimsHelpers.ROLE}),
-            
         };
 
         private readonly IEnumerable<ApiResource> _registeredApis = new List<ApiResource>()
@@ -71,8 +70,9 @@ namespace IdentityServerAuth
             new ApiResource
             {
                 Name = "api1",
-                ApiSecrets = { new Secret("secret") },
-                UserClaims = {
+                ApiSecrets = {new Secret("secret")},
+                UserClaims =
+                {
                     JwtClaimTypes.Email,
                     JwtClaimTypes.PhoneNumber,
                     JwtClaimTypes.GivenName,
@@ -82,10 +82,8 @@ namespace IdentityServerAuth
                 Description = "My API",
                 DisplayName = "MyApi1",
                 Enabled = true,
-                Scopes = { "api1" }
+                Scopes = {"api1"}
             }
-            
-            
         };
 
         private readonly IEnumerable<ApiScope> _registeredScopes = new List<ApiScope>()
@@ -162,7 +160,7 @@ namespace IdentityServerAuth
             new Client
             {
                 ClientId = "broker_limits_rest_client",
-                ClientSecrets = new List<Secret>() {new Secret("secretsecretsecret".ToSha256())},
+                ClientSecrets = new List<Secret>() {new Secret("secret".ToSha256())},
                 RequirePkce = true,
                 AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                 RedirectUris =
@@ -190,20 +188,26 @@ namespace IdentityServerAuth
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 AlwaysIncludeUserClaimsInIdToken = true,
                 AllowAccessTokensViaBrowser = true,
-                RequireClientSecret = false,
+                RequireClientSecret = true,
+                AllowedCorsOrigins =
+                {
+                    "https://localhost:5001",
+                    "https://localhost:44380"
+                },
                 ClientSecrets =
                 {
                     new Secret("secret".Sha256())
                 },
                 AllowedScopes =
                 {
+                    "ApiOne",
+                    "ApiTwo",
                     IdentityServer4.IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
                     ClaimsHelpers.ROLES_KEY
                 },
                 Claims = _clientClaims
             }
-            
         };
 
         #region Getters

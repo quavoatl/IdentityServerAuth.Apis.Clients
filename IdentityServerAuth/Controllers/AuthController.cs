@@ -103,52 +103,5 @@ namespace IdentityServerAuth.Controllers
 
             return View();
         }
-        
-        [HttpPost("/auth/signin")]
-        public async Task<IActionResult> Signin([FromBody]LoginViewModel model)
-        {
-            var serverClient = _clientFactory.CreateClient();
-            var disco = await serverClient.GetDiscoveryDocumentAsync("https://localhost:5005");
-            if (disco.IsError)
-            {
-                return BadRequest(disco.Error);
-            }
-
-            var tokenResponse = await serverClient.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = disco.TokenEndpoint,
-                ClientId = "broker_limits_rest_client_tests",
-                    
-                ClientSecret = "secret",
-                UserName = "user100@example.com",
-                Password = "Password1234!",
-                
-                Scope = $"roles openid"
-            });
-
-            if (tokenResponse.IsError)
-            {
-                return BadRequest(tokenResponse.Error);
-            }
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var result = await _userManager.FindByEmailAsync(model.Email);
-            
-            
-            if (result != null)
-            {
-                await _signInManager.PasswordSignInAsync(result, model.Password, false, false);
-                return Ok(new ProfileViewModel(result, tokenResponse));
-            }                
-                
-            return BadRequest("Invalid username or password.");
-        }
-        
-       
-
     }
 }

@@ -31,7 +31,6 @@ namespace IdentityServerAuth.Extensions
             {
                 context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "Username or password is incorrect");
                 return;
-
             }
            
             var roles = await UserManager.GetRolesAsync(user);
