@@ -18,6 +18,7 @@ namespace MvcClient
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient();
             services.AddAuthentication(config =>
                 {
                     config.DefaultScheme = "Cookies";
@@ -35,6 +36,7 @@ namespace MvcClient
                     config.GetClaimsFromUserInfoEndpoint = true;
 
                     config.Scope.Add(ClaimsHelpers.ROLES_KEY);
+                    config.Scope.Add("broker_limits_rest_api");
                     config.ClaimActions.MapUniqueJsonKey(ClaimsHelpers.ROLE,
                                                             ClaimsHelpers.ROLE,
                                                             ClaimsHelpers.ROLE);

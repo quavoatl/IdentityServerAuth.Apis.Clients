@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oN9m0SymMzIbZJLtGywEeF9i/uiyC73YhezxESf2PjLP5GXWeSfZtiowOivqRVDvcyb9ZZ2ULDLO0QdD2HsJWA==",
+  "dgSpecHash": "80xDoh6Kznrp1hpjejIbmvg7kvsPdW0i0V+ht2i8uiishMnZhAHa9Or+UNSI89zeW/2/GqvVBRPvUB1C1MKE9g==",
   "success": true,
   "projectFilePath": "C:\\Users\\seantal\\source\\repos\\LoginOAuth\\IdentityServerAuth\\MvcClient\\MvcClient.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\seantal\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.7.1\\microsoft.identitymodel.protocols.6.7.1.nupkg.sha512",
     "C:\\Users\\seantal\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.7.1\\microsoft.identitymodel.protocols.openidconnect.6.7.1.nupkg.sha512",
     "C:\\Users\\seantal\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.7.1\\microsoft.identitymodel.tokens.6.7.1.nupkg.sha512",
+    "C:\\Users\\seantal\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\seantal\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.7.1\\system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
     "C:\\Users\\seantal\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],

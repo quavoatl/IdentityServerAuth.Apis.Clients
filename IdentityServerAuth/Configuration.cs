@@ -60,6 +60,7 @@ namespace IdentityServerAuth
             new ApiResource("client_id_swagger_test") {Scopes = {"client_id_swagger_test"}},
             new ApiResource("ApiOne") {Scopes = {"ApiOne"}},
             new ApiResource("ApiTwo") {Scopes = {"ApiTwo"}},
+            new ApiResource("broker_limits_rest_api") {Scopes = {"broker_limits_rest_api"}},
             new ApiResource("foo-api")
             {
                 Scopes =
@@ -92,6 +93,7 @@ namespace IdentityServerAuth
             new ApiScope("api1", "full access"),
             new ApiScope("ApiOne", "Api One Resource - mare secret"),
             new ApiScope("ApiTwo", "full access"),
+            new ApiScope("broker_limits_rest_api", "broker_limits_rest_api"),
             new ApiScope("roless", "full access")
         };
 
@@ -114,7 +116,7 @@ namespace IdentityServerAuth
                 ClientId = "client_id_mvc",
                 ClientSecrets = new List<Secret>() {new Secret("client_secret_mvc".ToSha256())},
 
-                AllowedGrantTypes = GrantTypes.Code,
+                AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                 RedirectUris = {"https://localhost:5020/signin-oidc"},
 
                 AllowedScopes =
@@ -124,6 +126,7 @@ namespace IdentityServerAuth
                     IdentityServer4.IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
                     "mare.scope",
+                    "broker_limits_rest_api",
                     ClaimsHelpers.ROLES_KEY
                 },
 
@@ -144,7 +147,8 @@ namespace IdentityServerAuth
                 },
                 AllowedCorsOrigins =
                 {
-                    "https://localhost:5030"
+                    "https://localhost:5030",
+                    "https://localhost:5020"
                 },
                 AllowedScopes =
                 {
@@ -169,7 +173,8 @@ namespace IdentityServerAuth
                 },
                 AllowedCorsOrigins =
                 {
-                    "https://localhost:5001"
+                    "https://localhost:5001",
+                    "https://localhost:5020"
                 },
                 AllowedScopes =
                 {

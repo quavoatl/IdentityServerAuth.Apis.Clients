@@ -1,0 +1,46 @@
+﻿@model List<MvcClient.Contracts.ResponseObjects.LimitResponse>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>List Limits View</h2>
+
+
+<table>
+
+    <tr>
+        <td>
+            BrokerId
+        </td>
+        <td>
+            LimitId
+        </td>
+        <td>
+            Value
+        </td>
+        <td>
+            CoverType
+        </td>
+    </tr>
+
+    @{
+        foreach (var limit in @Model)
+        {
+            <tr>
+                <td>
+                    @limit.BrokerId
+                </td>
+                <td>
+                    @limit.LimitId
+                </td>
+                <td>
+                    @limit.Value
+                </td>
+                <td>
+                    @limit.CoverType
+                </td>
+            </tr>
+        }
+    }
+</table>

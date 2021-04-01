@@ -42,3 +42,5 @@ C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\obj\Debug\
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\obj\Debug\net5.0\Razor\Views\Home\Secret.cshtml.g.cs
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\bin\Debug\net5.0\IdentityServer4.Contracts.dll
 C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\bin\Debug\net5.0\IdentityServer4.Contracts.pdb
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\obj\Debug\net5.0\Razor\Views\Home\ListLimits.cshtml.g.cs
+C:\Users\seantal\source\repos\LoginOAuth\IdentityServerAuth\MvcClient\bin\Debug\net5.0\Newtonsoft.Json.dll

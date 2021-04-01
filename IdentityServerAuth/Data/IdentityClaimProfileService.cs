@@ -40,6 +40,7 @@ namespace IdentityServerAuth.Data
             if (user.Email != null)
             {
                 claims.Add(new Claim(IdentityServerConstants.StandardScopes.Email, user.Email));
+                claims.Add(new Claim("userId", user.Id));
             }
 
             //Map roles
