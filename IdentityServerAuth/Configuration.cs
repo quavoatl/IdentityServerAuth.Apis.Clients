@@ -61,6 +61,7 @@ namespace IdentityServerAuth
             new ApiResource("ApiOne") {Scopes = {"ApiOne"}},
             new ApiResource("ApiTwo") {Scopes = {"ApiTwo"}},
             new ApiResource("broker_limits_rest_api") {Scopes = {"broker_limits_rest_api"}},
+            new ApiResource("broker_covers_rest_api") {Scopes = {"broker_covers_rest_api"}},
             new ApiResource("foo-api")
             {
                 Scopes =
@@ -94,6 +95,7 @@ namespace IdentityServerAuth
             new ApiScope("ApiOne", "Api One Resource - mare secret"),
             new ApiScope("ApiTwo", "full access"),
             new ApiScope("broker_limits_rest_api", "broker_limits_rest_api"),
+            new ApiScope("broker_covers_rest_api", "broker_covers_rest_api"),
             new ApiScope("roless", "full access")
         };
 
@@ -134,7 +136,7 @@ namespace IdentityServerAuth
 
                 RequireConsent = false
             },
-            
+
             new Client
             {
                 ClientId = "InsuranceApp",
@@ -151,6 +153,7 @@ namespace IdentityServerAuth
                     IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
                     "mare.scope",
                     "broker_limits_rest_api",
+                    "broker_covers_rest_api",
                     ClaimsHelpers.ROLES_KEY
                 },
 
@@ -158,7 +161,7 @@ namespace IdentityServerAuth
 
                 RequireConsent = false
             },
-            
+
             new Client
             {
                 ClientId = "client_id_swagger_test",
@@ -198,12 +201,42 @@ namespace IdentityServerAuth
                 AllowedCorsOrigins =
                 {
                     "https://localhost:5001",
+                    "https://localhost:5020",
+                    "https://localhost:5045"
+                },
+                AllowedScopes =
+                {
+                    "ApiOne",
+                    "ApiTwo",
+                    "broker_limits_rest_api",
+                    IdentityServer4.IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
+                    "mare.scope",
+                    ClaimsHelpers.ROLES_KEY
+                },
+                AlwaysIncludeUserClaimsInIdToken = true,
+            },
+            new Client
+            {
+                ClientId = "broker_covers_rest_client",
+                ClientSecrets = new List<Secret>() {new Secret("secret".ToSha256())},
+                RequirePkce = true,
+                AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
+                RedirectUris =
+                {
+                    "https://localhost:5045/swagger/oauth2-redirect.html"
+                },
+                AllowedCorsOrigins =
+                {
+                    "https://localhost:5045",
+                    "https://localhost:5001",
                     "https://localhost:5020"
                 },
                 AllowedScopes =
                 {
                     "ApiOne",
                     "ApiTwo",
+                    "broker_limits_rest_api",
                     IdentityServer4.IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
                     "mare.scope",
