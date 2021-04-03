@@ -134,7 +134,31 @@ namespace IdentityServerAuth
 
                 RequireConsent = false
             },
+            
+            new Client
+            {
+                ClientId = "InsuranceApp",
+                ClientSecrets = new List<Secret>() {new Secret("secret".ToSha256())},
 
+                AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
+                RedirectUris = {"https://localhost:5035/signin-oidc"},
+
+                AllowedScopes =
+                {
+                    "ApiOne",
+                    "ApiTwo",
+                    IdentityServer4.IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServer4.IdentityServerConstants.StandardScopes.Profile,
+                    "mare.scope",
+                    "broker_limits_rest_api",
+                    ClaimsHelpers.ROLES_KEY
+                },
+
+                AlwaysIncludeUserClaimsInIdToken = true,
+
+                RequireConsent = false
+            },
+            
             new Client
             {
                 ClientId = "client_id_swagger_test",
